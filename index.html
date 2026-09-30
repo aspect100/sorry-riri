@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm So Sorry, My Love ❤️</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Dancing Script -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        script: ['"Dancing Script"', 'cursive'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .floating-heart {
+            position: absolute;
+            animation: floatUp 6s linear infinite;
+            opacity: 0.7;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0.6);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+        .envelope-flap {
+            transition: transform 0.6s ease-in-out;
+            transform-origin: top;
+        }
+        .envelope-open .envelope-flap {
+            transform: rotateX(180deg);
+        }
+        .letter-slide {
+            transition: transform 0.8s ease-in-out 0.3s;
+        }
+        .envelope-open .letter-slide {
+            transform: translateY(-110px);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-rose-50 via-pink-50 to-red-100 min-h-screen text-slate-700 font-sans relative overflow-x-hidden selection:bg-rose-200 selection:text-rose-900">
+
+    <div id="hearts-container" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
+
+    <main class="relative z-10 max-w-4xl mx-auto px-4 py-8 sm:py-12 flex flex-col items-center">
+        
+        <!-- Header Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-md shadow-sm border border-rose-100 text-rose-600 text-sm font-medium mb-8 animate-pulse">
+            <i class="fa-solid fa-heart text-rose-500"></i><span> Made with all my heart for you</span>
+        </div>
+
+        <section class="w-full max-w-md mb-16 text-center">
+            <h1 class="text-3xl sm:text-4xl font-bold text-slate-800 mb-2 font-script tracking-wide">Please Forgive Me, My Love</h1>
+            <p class="text-slate-500 text-sm mb-8">Tap the envelope to read my heartfelt apology</p>
+
+            <!-- Envelope Component -->
+            <div id="envelope-wrapper" class="relative cursor-pointer group mx-auto w-72 sm:w-80 h-52 sm:h-60" onclick="toggleEnvelope()">
+                <!-- Envelope Back -->
+                <div class="absolute inset-0 bg-rose-200 rounded-2xl shadow-lg border-2 border-rose-300"></div>
+                
+                <!-- Letter Inside -->
+                <div id="letter" class="letter-slide absolute inset-x-4 top-4 bg-white rounded-xl p-5 shadow-md border border-rose-100 text-left h-48 overflow-y-auto transform translate-y-0 z-10">
+                    <div class="text-rose-500 font-script text-2xl mb-1">My Dearest,</div>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        I know I messed up, and seeing you upset breaks my heart. You mean everything to me, and my biggest regret is causing you pain. I promise to listen better, cherish you more, and never take your love for granted. Please let me make things right.
+                    </p>
+                    <div class="mt-3 text-right text-xs font-script text-rose-600 text-lg">Forever yours ❤️</div>
+                </div>
+
+                <!-- Envelope Front Pocket -->
+                <div class="absolute inset-x-0 bottom-0 h-36 bg-rose-300 rounded-b-2xl shadow-inner border-t-2 border-rose-400 z-20 flex items-end justify-center pb-4 pointer-events-none">
+                    <span class="text-white text-xs font-semibold bg-rose-500/80 px-3 py-1 rounded-full backdrop-blur-sm group-hover:bg-rose-600 transition">Tap to Open 💌</span>
+                </div>
+
+                <!-- Envelope Flap -->
+                <div id="envelope-flap" class="envelope-flap absolute top-0 inset-x-0 h-28 bg-rose-400 rounded-t-2xl z-30 origin-top shadow-md" style="clip-path: polygon(0 0, 100% 0, 50% 100%);"></div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16 max-w-2xl">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 font-script">Your Special Redeemable Surprises</h2>
+                <p class="text-slate-500 text-sm">Tap redeem whenever you want to cash these in!</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Coupon 1: Full Body Massage -->
+                <div class="bg-gradient-to-br from-rose-400 to-pink-500 text-white p-6 rounded-3xl shadow-xl flex flex-col justify-between relative overflow-hidden transform hover:scale-[1.02] transition">
+                    <div class="absolute -right-6 -bottom-6 text-white/10 text-8xl pointer-events-none"><i class="fa-solid fa-spa"></i></div>
+                    <div>
+                        <span class="bg-white/20 text-xs px-3 py-1 rounded-full uppercase tracking-wider font-semibold">Valid Anytime</span>
+                        <h4 class="font-bold text-xl mt-3 font-script">Full Body Massage</h4>
+                        <p class="text-xs text-rose-100 mt-2 leading-relaxed">Relax completely with a soothing full-body massage, calming music, and all your stress melted away.</p>
+                    </div>
+                    <div class="mt-6">
+                        <button onclick="redeemCoupon(this, 'Full Body Massage')" class="w-full bg-white text-rose-600 py-3 rounded-2xl text-sm font-bold shadow-md hover:bg-rose-50 transition active:scale-95">Redeem Now ✨</button>
+                    </div>
+                </div>
+
+                <!-- Coupon 2: Going on a Date -->
+                <div class="bg-gradient-to-br from-pink-500 to-rose-500 text-white p-6 rounded-3xl shadow-xl flex flex-col justify-between relative overflow-hidden transform hover:scale-[1.02] transition">
+                    <div class="absolute -right-6 -bottom-6 text-white/10 text-8xl pointer-events-none"><i class="fa-solid fa-champagne-glasses"></i></div>
+                    <div>
+                        <span class="bg-white/20 text-xs px-3 py-1 rounded-full uppercase tracking-wider font-semibold">Special Date Pass</span>
+                        <h4 class="font-bold text-xl mt-3 font-script">Going on a Special Date</h4>
+                        <p class="text-xs text-rose-100 mt-2 leading-relaxed">Your choice of restaurant, wonderful ambiance, favorite treats, and complete undivided attention from me.</p>
+                    </div>
+                    <div class="mt-6">
+                        <button onclick="redeemCoupon(this, 'Special Date')" class="w-full bg-white text-rose-600 py-3 rounded-2xl text-sm font-bold shadow-md hover:bg-rose-50 transition active:scale-95">Redeem Now ✨</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full max-w-xl mb-16 bg-white/80 backdrop-blur-md p-8 rounded-3xl shadow-sm border border-rose-100 text-center">
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 font-script mb-2">Why You Mean Everything To Me</h2>
+            <p class="text-slate-500 text-sm mb-6">Click the button below to see another sweet reminder</p>
+
+            <div id="reason-box" class="min-h-[80px] flex items-center justify-center bg-rose-50/60 rounded-2xl p-6 border border-rose-100 mb-6 text-rose-700 font-medium text-base sm:text-lg transition-all duration-300">
+                "Your gorgeous smile that instantly brightens up my darkest days."
+            </div>
+
+            <button onclick="getRandomReason()" class="bg-rose-500 hover:bg-rose-600 text-white font-semibold px-6 py-3 rounded-xl shadow-md shadow-rose-200 transition transform active:scale-95">
+                <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Reveal Another Reason
+            </button>
+        </section>
+
+        <section class="w-full text-center pb-12">
+            <h3 class="text-xl sm:text-2xl font-bold text-slate-800 font-script mb-4">Can you find it in your heart to forgive me?</h3>
+            <div class="flex items-center justify-center gap-4 relative h-20">
+                <button onclick="acceptApology()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-8 py-3.5 rounded-2xl shadow-lg shadow-rose-300 transition transform hover:scale-105 active:scale-95 text-base z-20">
+                    Yes, I Forgive You ❤️
+                </button>
+                <button id="no-btn" onmouseover="moveButton()" ontouchstart="moveButton()" class="bg-slate-200 hover:bg-slate-300 text-slate-600 font-semibold px-6 py-3.5 rounded-2xl transition text-base z-10 absolute sm:static">
+                    Not Yet 🥺
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl p-8 max-w-sm w-full text-center shadow-2xl transform scale-95 transition-transform duration-300" id="modal-content">
+            <div id="modal-icon" class="w-16 h-16 bg-rose-100 text-rose-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 animate-bounce">
+                <i class="fa-solid fa-heart-circle-check"></i>
+            </div>
+            <h3 id="modal-title" class="text-2xl font-bold text-slate-800 font-script mb-2">Thank You, My Love!</h3>
+            <p id="modal-desc" class="text-sm text-slate-600 mb-6">You've made me the happiest person alive. I promise to cherish you and do better every single day.</p>
+            <button onclick="closeModal()" class="w-full bg-rose-500 hover:bg-rose-600 text-white font-semibold py-3 rounded-xl shadow transition">
+                I Love You ❤️
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Floating Background Hearts Generator
+        const heartsContainer = document.getElementById('hearts-container');
+        const heartSymbols = ['❤', '💖', '💗', '💓', '✨', '🌸'];
+
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            heart.style.fontSize = (Math.random() * 16 + 14) + 'px';
+            heart.innerHTML = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createFloatingHeart, 400);
+
+        // Envelope Open Toggle
+        let isEnvelopeOpen = false;
+        function toggleEnvelope() {
+            const wrapper = document.getElementById('envelope-wrapper');
+            isEnvelopeOpen = !isEnvelopeOpen;
+            if (isEnvelopeOpen) {
+                wrapper.classList.add('envelope-open');
+            } else {
+                wrapper.classList.remove('envelope-open');
+            }
+        }
+
+        // Coupon Redemption Handler
+        function redeemCoupon(button, couponName) {
+            button.innerText = 'Redeemed Successfully! ✨';
+            button.classList.remove('bg-white', 'text-rose-600', 'hover:bg-rose-50');
+            button.classList.add('bg-rose-700', 'text-white', 'cursor-default');
+            button.disabled = true;
+            
+            // Show modal confirming redemption
+            const modal = document.getElementById('modal');
+            const modalContent = document.getElementById('modal-content');
+            document.getElementById('modal-title').innerText = `${couponName} Claimed!`;
+            document.getElementById('modal-desc').innerText = `Your coupon has been successfully redeemed! Let me know whenever you're ready to enjoy this together. ❤️`;
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+            }, 10);
+
+            // Trigger mini heart burst
+            for(let i=0; i<10; i++) {
+                setTimeout(createFloatingHeart, i * 80);
+            }
+        }
+
+        // Reasons Why I Love You Generator
+        const reasons = [
+            "Your gorgeous smile that instantly brightens up my darkest days.",
+            "The way your eyes light up when you talk about things you're passionate about.",
+            "Your incredible kindness and how deeply you care for everyone around you.",
+            "How safe and at home I feel whenever I'm wrapped in your arms.",
+            "Your patience with me even when I'm stubborn or difficult.",
+            "The silly little jokes and laughs we share that nobody else understands.",
+            "How smart, driven, and inspiring you are in everything you do."
+        ];
+
+        function getRandomReason() {
+            const box = document.getElementById('reason-box');
+            let randomReason = reasons[Math.floor(Math.random() * reasons.length)];
+            box.style.opacity = '0';
+            setTimeout(() => {
+                box.innerText = `"${randomReason}"`;
+                box.style.opacity = '1';
+            }, 200);
+        }
+
+        // Playful 'No' button escape on hover/touch
+        function moveButton() {
+            const btn = document.getElementById('no-btn');
+            const x = (Math.random() - 0.5) * 200;
+            const y = (Math.random() - 0.5) * 100;
+            btn.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        // Accept Apology Modal Handler
+        function acceptApology() {
+            const modal = document.getElementById('modal');
+            const modalContent = document.getElementById('modal-content');
+            document.getElementById('modal-title').innerText = `Thank You, My Love!`;
+            document.getElementById('modal-desc').innerText = `You've made me the happiest person alive. I promise to cherish you and do better every single day.`;
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+            }, 10);
+
+            // Create extra celebration hearts
+            for(let i=0; i<20; i++) {
+                setTimeout(createFloatingHeart, i * 80);
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            const modalContent = document.getElementById('modal-content');
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+    </script>
+</body>
+</html>
